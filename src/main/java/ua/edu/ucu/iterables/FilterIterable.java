@@ -18,7 +18,7 @@ public class FilterIterable implements Iterable<Integer> {
         Iterator<Integer> parentIterator = iterable.iterator();
 
         return new Iterator<Integer>() {
-            private Integer nextVal;
+            private Integer nextVal = null;
 
             public boolean hasNext() {
                 while (parentIterator.hasNext()) {

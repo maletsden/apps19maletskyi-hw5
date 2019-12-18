@@ -6,7 +6,9 @@ import ua.edu.ucu.iterables.FlatMapIterable;
 import ua.edu.ucu.iterables.MapIterable;
 import ua.edu.ucu.iterables.OfIterable;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.Stream;
 
 public class AsIntStream implements IntStream {
     private Iterable<Integer> iterable;
@@ -67,6 +69,7 @@ public class AsIntStream implements IntStream {
         for (Integer number : iterable) {
             counter += 1;
         }
+
         return counter;
     }
 
@@ -105,11 +108,12 @@ public class AsIntStream implements IntStream {
 
     @Override
     public int reduce(int identity, IntBinaryOperator op) {
+        int result = identity;
         for (Integer number : iterable) {
-            identity = op.apply(identity, number);
+            result = op.apply(result, number);
         }
 
-        return identity;
+        return result;
     }
 
     @Override
