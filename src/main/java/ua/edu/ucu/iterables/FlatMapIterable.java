@@ -21,17 +21,7 @@ public class FlatMapIterable implements Iterable<Integer> {
         Iterator<Integer> parentIterator = iterable.iterator();
 
         return new Iterator<Integer>() {
-            Iterator<Integer> newIterator = new Iterator<Integer>() {
-                @Override
-                public boolean hasNext() {
-                    return false;
-                }
-
-                @Override
-                public Integer next() {
-                    return null;
-                }
-            };
+            Iterator<Integer> newIterator;
 
             public boolean hasNext() {
                 if (newIterator != null && newIterator.hasNext()) {
