@@ -89,4 +89,18 @@ public class AsIntStreamTest {
         assertNull(intStream.max());
     }
 
+    @Test
+    public void testStreamCount() {
+        System.out.println("testStreamCount");
+        long expResult = 5;
+        assertEquals(expResult, intStream.count());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testStreamClosedError() {
+        System.out.println("testStreamClosedError");
+        intStream.toArray();
+        intStream.toArray();
+    }
+
 }

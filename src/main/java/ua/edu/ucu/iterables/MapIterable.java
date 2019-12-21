@@ -4,7 +4,7 @@ import ua.edu.ucu.function.IntUnaryOperator;
 
 import java.util.Iterator;
 
-public class MapIterable implements Iterable<Integer> {
+public class MapIterable extends StreamIterable implements Iterable<Integer> {
     private Iterable<Integer> iterable;
     private IntUnaryOperator func;
 
@@ -14,7 +14,7 @@ public class MapIterable implements Iterable<Integer> {
     }
 
     @Override
-    public Iterator<Integer> iterator() {
+    public Iterator<Integer> getIterator() {
         Iterator<Integer> parentIterator = iterable.iterator();
 
         return new Iterator<Integer>() {

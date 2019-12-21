@@ -4,7 +4,7 @@ import ua.edu.ucu.function.IntPredicate;
 
 import java.util.Iterator;
 
-public class FilterIterable implements Iterable<Integer> {
+public class FilterIterable extends StreamIterable implements Iterable<Integer> {
     private Iterable<Integer> iterable;
     private IntPredicate pred;
 
@@ -14,7 +14,7 @@ public class FilterIterable implements Iterable<Integer> {
     }
 
     @Override
-    public Iterator<Integer> iterator() {
+    public Iterator<Integer> getIterator() {
         Iterator<Integer> parentIterator = iterable.iterator();
 
         return new Iterator<Integer>() {

@@ -2,7 +2,7 @@ package ua.edu.ucu.iterables;
 
 import java.util.Iterator;
 
-public class OfIterable implements Iterable<Integer> {
+public class OfIterable extends StreamIterable implements Iterable<Integer> {
     private int[] values;
 
     public OfIterable(int[] values) {
@@ -10,7 +10,7 @@ public class OfIterable implements Iterable<Integer> {
     }
 
     @Override
-    public Iterator<Integer> iterator() {
+    public Iterator<Integer> getIterator() {
         return new Iterator<Integer>() {
             private int index = 0;
 

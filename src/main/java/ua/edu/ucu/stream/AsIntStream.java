@@ -6,6 +6,7 @@ import ua.edu.ucu.iterables.FlatMapIterable;
 import ua.edu.ucu.iterables.MapIterable;
 import ua.edu.ucu.iterables.OfIterable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.stream.Stream;
@@ -17,7 +18,7 @@ public class AsIntStream implements IntStream {
         this.iterable = iterable;
     }
 
-    public static IntStream of(int... values) {
+    public static AsIntStream of(int... values) {
         return new AsIntStream(new OfIterable(values));
     }
 
@@ -118,11 +119,17 @@ public class AsIntStream implements IntStream {
 
     @Override
     public int[] toArray() {
-        int[] array = new int[(int) count()];
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (Integer number : iterable) {
+            list.add(number);
+        }
+
+        int[] array = new int[list.size()];
 
         int i = 0;
 
-        for (Integer number : iterable) {
+        for (Integer number : list) {
             array[i++] = number;
         }
 

@@ -5,7 +5,7 @@ import ua.edu.ucu.stream.AsIntStream;
 
 import java.util.Iterator;
 
-public class FlatMapIterable implements Iterable<Integer> {
+public class FlatMapIterable extends StreamIterable implements Iterable<Integer> {
     private Iterable<Integer> iterable;
     private IntToIntStreamFunction func;
 
@@ -17,7 +17,7 @@ public class FlatMapIterable implements Iterable<Integer> {
     }
 
     @Override
-    public Iterator<Integer> iterator() {
+    public Iterator<Integer> getIterator() {
         Iterator<Integer> parentIterator = iterable.iterator();
 
         return new Iterator<Integer>() {
