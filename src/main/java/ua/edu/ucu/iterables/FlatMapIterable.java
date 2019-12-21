@@ -21,7 +21,7 @@ public class FlatMapIterable extends StreamIterable implements Iterable<Integer>
         Iterator<Integer> parentIterator = iterable.iterator();
 
         return new Iterator<Integer>() {
-            Iterator<Integer> newIterator;
+            private Iterator<Integer> newIterator;
 
             public boolean hasNext() {
                 if (newIterator != null && newIterator.hasNext()) {
