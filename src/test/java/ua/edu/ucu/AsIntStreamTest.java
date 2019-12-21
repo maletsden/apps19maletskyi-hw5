@@ -85,8 +85,8 @@ public class AsIntStreamTest {
     @Test
     public void testStreamMaxOfEmptyStream() {
         System.out.println("testStreamMaxOfEmptyStream");
-        intStream = intStream.filter(x -> x > 10);
-        assertNull(intStream.max());
+
+        assertNull(intStream.filter(x -> false).max());
     }
 
     @Test

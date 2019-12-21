@@ -27,7 +27,7 @@ public class AsIntStream implements IntStream {
     @Override
     public Double average() {
         int result = 0, counter = 0;
-
+        
         for (Integer number : iterable) {
             result += number;
             counter += 1;
@@ -52,12 +52,10 @@ public class AsIntStream implements IntStream {
         if (!iterator.hasNext()) {
             return null;
         }
-
         Integer value = iterator.next();
 
         while (iterator.hasNext()) {
             Integer nextVal = iterator.next();
-
             if (nextVal < value == min) {
                 value = nextVal;
             }
@@ -82,13 +80,7 @@ public class AsIntStream implements IntStream {
 
     @Override
     public Integer sum() {
-        Integer result = 0;
-
-        for (Integer number : iterable) {
-            result += number;
-        }
-
-        return result;
+        return reduce(0, Integer::sum);
     }
 
     @Override
@@ -116,6 +108,7 @@ public class AsIntStream implements IntStream {
     @Override
     public int reduce(int identity, IntBinaryOperator op) {
         int result = identity;
+
         for (Integer number : iterable) {
             result = op.apply(result, number);
         }
